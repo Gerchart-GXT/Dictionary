@@ -62,7 +62,7 @@ class Translate:
             if(len(meaning) > 0):
                 for i in meaning: 
                     word = i.find('div', class_ = 'trans-ce')
-                    dic.append(self.trans_from_youdaodic(word.text))
+                    dic.append(word.text)
             else:
                 trans = express.find("p", class_ = "trans-content")
                 if(trans):
@@ -90,7 +90,7 @@ class Translate:
             response = self._get_xml(word)
         except MyErro as e:
             print(e)    
-            sys.exit(1)
+            return
 
         soup = BeautifulSoup(response, 'html.parser')
         if(trans_mode):
@@ -102,3 +102,6 @@ class Translate:
             res = self._handle_en_to_cn(soup)
             return res
 
+if __name__ == "__main__":
+    t = Translate("en")
+    print(t.trans_from_youdaodic(input()))

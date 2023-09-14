@@ -3,22 +3,17 @@ import tkinter as tk
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
 
-import sys
-sys.path.append("../")
-from translate import Translate
-
-
 class TranslatePage(Page):
-    def __init__(self:Page, root, font):
+    def __init__(self:Page, root, font, translator):
+        self.translator = translator
         super().__init__(root, font)
-        self._translator = Translate("en")
         self.word = ""
         self.font = font
         self.result = {"dic": [], "phrase": []}
         self._render()
 
     def _translate(self, word):
-        self.result = self._translator.trans_from_youdaodic(word)
+        self.result = self.translator.trans_from_youdaodic(word)
         self.word = word
         super()._clear_widget()
         self._render()

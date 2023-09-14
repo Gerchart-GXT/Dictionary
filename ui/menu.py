@@ -1,7 +1,6 @@
 import tkinter as tk
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
-from translate_page import TranslatePage
 
 class Menu(tk.Menu):
     def __init__(self, root, font, frames):

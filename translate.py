@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import re, sys, requests
-from myerro import MyErro
+class HttpErro(Exception):
+    def __init__(self, message):
+        super().__init__(message)
 
 class Translate:
     def __init__(self, lang):
@@ -18,7 +20,7 @@ class Translate:
         if response.status_code == 200:
             return response.text
         else:
-            raise MyErro(str(response.status_code) + " 请求失败，请检查网咯")
+            raise HttpErro(str(response.status_code) + " 请求失败，请检查网咯")
             
     def _handle_en_to_cn(self, soup):
         dic = []

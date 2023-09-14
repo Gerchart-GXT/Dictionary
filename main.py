@@ -1,7 +1,7 @@
 import sys
 sys.path.append("./ui")
 sys.path.append("./db")
-from translate import Translate
+from tools.translate import Translate
 from ui import Ui   
 from db import Db
 

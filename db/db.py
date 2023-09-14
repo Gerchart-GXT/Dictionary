@@ -1,5 +1,5 @@
 import sqlite3
-from sql import *
+from table_sql import *
 
 class Db:
     def __init__(self):

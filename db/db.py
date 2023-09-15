@@ -19,6 +19,7 @@ class Db:
             return
         
     def runSQL(self, sql):
+        print(sql)
         try:
 
             self.cursor.execute(sql)
@@ -27,45 +28,48 @@ class Db:
             return (False, e)
         
     def get_word(self, word):
-        return self.runSQL(f'''SELECT * FROM AllWords WHERE word = "{word}"''')
+        return self.runSQL(f"SELECT * FROM AllWords WHERE word = '{word}'")
 
     def get_allwords(self):
-        return self.runSQL(f'''SELECT * FROM AllWords''')
+        return self.runSQL(f"SELECT * FROM AllWords")
     
     def insert_word(self, listId, word, expr, isCN):
-        return self.runSQL(f'''INSERT INTO AllWords (listId, word, expr, isCN) VALUES("{listId}", "{word}", "{expr}", "{isCN}")''')
+        return self.runSQL(f"INSERT INTO AllWords (listId, word, expr, isCN) VALUES('{listId}', '{word}', '{expr}', '{isCN}')")
 
     def delete_word(self, wordId):
-        return self.runSQL(f'''DELETE FROM AllWords WHERE wordId = "{wordId}"''')
+        return self.runSQL(f"DELETE FROM AllWords WHERE wordId = '{wordId}'")
 
     def get_list(self, listName, listDescribe):
-        return self.runSQL(f'''SELECT * FROM ListMenu WHERE listName = "{listName}"''')
+        return self.runSQL(f"SELECT * FROM ListMenu WHERE listName = '{listName}'")
 
     def create_list(self, listName, listDescribe):
-        return self.runSQL(f'''INSERT INTO ListMenu (listName, listDescribe) VALUES ("{listName}", "{listDescribe}")''')
+        return self.runSQL(f"INSERT INTO ListMenu (listName, listDescribe) VALUES ('{listName}', '{listDescribe}')")
     
     def delete_list(self, listId):
-        return self.runSQL(f'''DELETE FROM ListMenu WHERE listId = "{listId}"''')
+        return self.runSQL(f"DELETE FROM ListMenu WHERE listId = '{listId}'")
     
     def get_listMenu(self):
-        return self.runSQL(f'''SELECT * FROM ListMenu''')
+        return self.runSQL(f"SELECT * FROM ListMenu")
     
     def get_listword(self, listId):
-        return self.runSQL(f'''SELECT * FROM AllWords WHERE listId = "{listId}"''')
+        return self.runSQL(f"SELECT * FROM AllWords WHERE listId = '{listId}'")
 
-    def insert_history(self, word, expr, isCN, isSave):
-        return self.runSQL(f'''INSERT INTO HistoryWord (word, expr, isCN, isSaved) VALUES("{word}", "{expr}", "{isCN}", "{isSave}")''')
+    def insert_history(self, word, expr, isCN, isSaved):
+        return self.runSQL(f"INSERT INTO HistoryWord (word, expr, isCN, isSaved) VALUES('{word}', '{expr}', '{isCN}', '{isSaved}')")
 
     def delete_history(self, word):
-        return self.runSQL(f'''DELETE FROM HistoryWord WHERE word = "{word}"''')
+        return self.runSQL(f"DELETE FROM HistoryWord WHERE word = '{word}'")
+    
+    def save_history(self, word, expr):
+        return self.runSQL(f"UPDATE HistoryWord SET expr = '{expr}', isSaved = '1' WHERE word = '{word}'")
 
     def get_allhistory(self):
-        return self.runSQL(f'''SELECT * FROM HistoryWord''')
+        return self.runSQL(f"SELECT * FROM HistoryWord")
 
     def get_history_word(self, word):
-        return self.runSQL(f'''SELECT * FROM HistoryWord WHERE word = "{word}"''')
+        return self.runSQL(f"SELECT * FROM HistoryWord WHERE word = '{word}'")
 
     def get_history_saved(self):
-        return self.runSQL('''SELECT * FROM HistoryWord WHERE isSaved = "1"''')
+        return self.runSQL("SELECT * FROM HistoryWord WHERE isSaved = 1")
 
     

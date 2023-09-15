@@ -10,7 +10,7 @@ class Ui:
         self.root.geometry(size)
         self.font = font
         frames = {
-            "translate_page": TranslatePage(self.root, self.font, tools["_translator"]),
+            "translate_page": TranslatePage(self.root, self.font, tools["_translator"], tools["_db"]),
             # "history_page": Page(self.root, self.font, tools["db"]),
             # "saved_page": Page(self.root, self.font, tools["db"]),
             # "notebook_page": Page(self.root, self.font, tools["db"]),

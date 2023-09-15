@@ -16,7 +16,7 @@ class Page(ttk.Frame):
         return None
     
     def _label_create(self, text):
-        label = ttk.Label(self, text = text, font = self.__font, wraplength=300, justify='left')
+        label = ttk.Label(self, text = text, font = self.__font, wraplength=800, justify='left')
         return label
     
     def _button_create(self, text, command, bootstyle):
@@ -24,11 +24,11 @@ class Page(ttk.Frame):
         return button
     
     def _input_create(self):
-        input = ttk.Entry(self, width=50, font=self.__font)
+        input = ttk.Entry(self, font=self.__font)
         return input
     
     def _text_create(self, expr):
-        text = scrolledtext.ScrolledText(self, font=self.__font, wrap=WORD, width=22, height=10)
+        text = scrolledtext.ScrolledText(self, font=self.__font, wrap=WORD, width=20, height=10)
 
         text.delete(1.0, tk.END)
         text.insert(tk.END, expr)
@@ -40,11 +40,10 @@ class Page(ttk.Frame):
         widget.grid(row = row, col = col)
 
     def _remove_widget(self, widget):
-        self.removedWidget.add(widget)
-        widget.grid_forget()
+        widget.destroy()
 
-    def _clear_widget(self):
-        for widget in self.winfo_children():
+    def _clear_widget(self, widgets):
+        for widget in widgets:
             widget.destroy()
     
     def _table_create(self, columns, valList):
@@ -57,7 +56,6 @@ class Page(ttk.Frame):
         vsb = ttk.Scrollbar(self, orient="vertical", command=tree.yview)
         tree.configure(yscrollcommand=vsb.set)
         vsb.pack(side="right", fill="y")
-
         hsb = ttk.Scrollbar(self, orient="horizontal", command=tree.xview)
         tree.configure(xscrollcommand=hsb.set)
         

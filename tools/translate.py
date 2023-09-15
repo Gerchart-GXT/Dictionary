@@ -90,19 +90,17 @@ class Translate:
 
         try:
             response = self._get_xml(word)
-        except MyErro as e:
+        except HttpErro as e:
             print(e)    
             return
 
         soup = BeautifulSoup(response, 'html.parser')
         if(trans_mode):
-            print("中to英")
             res = self._handle_cn_to_en(soup)
-            return res
+            return (1, res)
         else:
-            print("英to中")
             res = self._handle_en_to_cn(soup)
-            return res
+            return (0, res)
 
 if __name__ == "__main__":
     t = Translate("en")

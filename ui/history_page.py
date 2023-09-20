@@ -1,4 +1,7 @@
 import tkinter as tk
+import sys
+sys.path.append("../tools")
+from store import *
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
 from page import Page
@@ -14,7 +17,7 @@ class HistoryPage(Page):
         self._render()
 
     def _change_item(self):
-        curSelect = self.
+        pass
 
     def _render(self):
         super()._clear_widget(self._widgets)

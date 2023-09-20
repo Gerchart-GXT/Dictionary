@@ -3,6 +3,7 @@ from dialog import Dialog
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
 
+print(A)
 class Table:
     def __init__(self, root, heading):
         self.root = root
@@ -16,10 +17,7 @@ class Table:
         return self.table.item(self.table.selection(), "values")
     
     def on_item_double_click(self, event):
-        item = self.get_select_item()
-        dlog = Dialog(self.root, "更改",
-            zip([heading[1] for heading in self.heading], list(item)),
-            [("保存", lambda: self.change_item())])
+        tableValue = self.get_select_item()
 
     def insert_item(self, values):
         self.table.insert("", "end", values=values)

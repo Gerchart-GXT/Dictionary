@@ -3,7 +3,7 @@ from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
 class Dialog:
     def __init__(self, root, title, inputItems, buttonItems):
-        self.dialog = tk.Toplevel(root)  # 创建一个新的顶级窗口
+        self.dialog = tk.Toplevel(root)
         self.dialog.title(title)
         self.inputs = []
         for item in inputItems:

@@ -8,7 +8,7 @@ CreateHistoryWord = '''
         expr TEXT,
         saveTime DATETIME,
         isCN INTEGER CHECK (isCN IN (0, 1)),
-        isSaved INTEGER CHECK (isCN IN (0, 1))
+        isSaved INTEGER CHECK (isSaved IN (0, 1))
     )
 '''
 

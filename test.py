@@ -1,30 +1,39 @@
 import tkinter as tk
+from tkinter import ttk
 
-def custom_dialog(title, root):
-    dialog = tk.Toplevel(root)  # 创建一个新的顶级窗口
-    dialog.title(title)
-    
-    # 创建文本框
-    label = tk.Label(dialog, text=f"{title} 输入:")
-    label.pack()
-    entry = tk.Entry(dialog)
-    entry.pack()
+def expand_item():
+    selected_item = treeview.selection()
+    if selected_item:
+        treeview.item(selected_item, open=True)
 
-    # 创建确定按钮
-    def on_ok():
-        input_text = entry.get()
-        print(f"{title} 输入:", input_text)
-        dialog.destroy()
-    
-    ok_button = tk.Button(dialog, text="确定", command=on_ok)
-    ok_button.pack()
+def collapse_item():
+    selected_item = treeview.selection()
+    if selected_item:
+        treeview.item(selected_item, open=False)
 
 root = tk.Tk()
-root.title("多个自定义对话框示例")
+root.title("Multi-Level Treeview")
 
-# 创建多个自定义对话框
-custom_dialog("对话框 1", root)
-custom_dialog("对话框 2", root)
-custom_dialog("对话框 3", root)
+# 创建 Treeview
+treeview = ttk.Treeview(root)
+treeview.pack()
+
+# 添加根节点
+root_node = treeview.insert("", "end", text="Root", open=True)
+
+# 添加子节点
+child1 = treeview.insert(root_node, "end", text="Child 1", open=True)
+child2 = treeview.insert(root_node, "end", text="Child 2")
+
+# 添加孙子节点
+grandchild1 = treeview.insert(child1, "end", text="Grandchild 1")
+grandchild2 = treeview.insert(child1, "end", text="Grandchild 2")
+
+# 添加按钮来展开和折叠选定项
+expand_button = tk.Button(root, text="Expand", command=expand_item)
+expand_button.pack()
+
+collapse_button = tk.Button(root, text="Collapse", command=collapse_item)
+collapse_button.pack()
 
 root.mainloop()

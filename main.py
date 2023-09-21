@@ -7,13 +7,14 @@ from db import Db
 
 class Dic:
     def __init__(self):
-        db = Db()
         self.translator = Translate("en")
+        db = Db()
         self.tools = {
-            "_translator": self.translator,
-            "_db": db
+            "translator": self.translator,
+            "db": db, 
+            "tableValue":[]
         }
-        ui = Ui(font=("微软雅黑", 14), size="600x600", tools = self.tools)
+        ui = Ui(font=("微软雅黑", 14), size="1280x768", tools=self.tools)
 
 
 if __name__ == "__main__":

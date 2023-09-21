@@ -5,12 +5,11 @@ from ttkbootstrap.constants import *
 import json
 
 class TranslatePage(Page):
-    def __init__(self:Page, root, font, translator, db):
+    def __init__(self:Page, root, font, tools):
         super().__init__(root, font)
 
-        self.translator = translator
-        self.db = db
-        
+        self.translator = tools["translator"]
+        self.db = tools["db"]
         self.word = ""
         self.font = font
         self.result = {"dic": [], "phrase": []}
@@ -88,7 +87,7 @@ class TranslatePage(Page):
                     s = "<--词典/翻译:-->\n\n"
                     for idx, val in enumerate(self.result["dic"], start=0):
                         s += "(" + str(idx+1) + ")\n"
-                        s += val + "\n"
+                        s += str(val) + '\n'
                     dicText = exprFrame._text_create(s)
                     dicText.grid(row="1", column="0", columnspan="6", padx='5', pady='5', sticky=W)
 
@@ -96,7 +95,7 @@ class TranslatePage(Page):
                     s = "<--短语（含网络派生）:-->\n\n"
                     for idx, val in enumerate(self.result["phrase"], start=0):
                         s += "(" + str(idx+1) + ")\n"
-                        s += val + "\n"
+                        s += str(val) + "\n"
                     phraseText = exprFrame._text_create(s)
                     phraseText.grid(row="1", column="6", columnspan="6", padx='5', pady='5', sticky=E)
 

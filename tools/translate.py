@@ -33,13 +33,13 @@ class Translate:
                     pos = i.find('span', class_ = 'pos')
                     trans = i.find('span', class_ = 'trans')
                     if(pos and trans):
-                        dic.append(pos.text + "\n" + trans.text)
+                        dic.append((pos.text, trans.text))
                     else:
-                        dic.append(trans.text)
+                        dic.append((None, trans.text))
             else:
                 trans = express.find("p", class_ = "trans-content")
                 if(trans):
-                    dic.append(trans.text)
+                    dic.append((None, trans.text))
     
         phrase = []
         express = soup.find('div', class_ = 'webPhrase')
@@ -49,7 +49,7 @@ class Translate:
                 en = i.find('a', class_ = 'point')
                 cn = i.find('p', class_ = 'sen-phrase')
                 if(en and cn):  
-                    phrase.append(en.text + "\n" + cn.text)
+                    phrase.append((en.text, cn.text))
         return {
             "dic": dic,
             "phrase": phrase
@@ -64,11 +64,11 @@ class Translate:
             if(len(meaning) > 0):
                 for i in meaning: 
                     word = i.find('div', class_ = 'trans-ce')
-                    dic.append(word.text)
+                    dic.append((word.text, None))
             else:
                 trans = express.find("p", class_ = "trans-content")
                 if(trans):
-                    dic.append(trans.text)
+                    dic.append((trans.text, None,))
     
         phrase = []
         express = soup.find('div', class_ = 'webPhrase')
@@ -78,7 +78,7 @@ class Translate:
                 en = i.find('a', class_ = 'point')
                 cn = i.find('p', class_ = 'sen-phrase')
                 if(en and cn):  
-                    phrase.append(en.text + "\n" + cn.text)
+                    phrase.append((en.text, cn.text))
         return {
             "dic": dic,
             "phrase": phrase

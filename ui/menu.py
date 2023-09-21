@@ -16,4 +16,5 @@ class Menu(tk.Menu):
         self.add_command(label="打开笔记本", font=self.__font, command=lambda :self._change_frame(frames["notebook_page"]))
         self.add_command(label="关于", font=self.__font, command=lambda :self._change_frame(frames["about_page"]))
     def _change_frame(self, frame):
+        frame._render()
         frame.tkraise()

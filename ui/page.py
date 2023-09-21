@@ -24,11 +24,11 @@ class Page(ttk.Frame):
         return button
     
     def _input_create(self):
-        input = ttk.Entry(self, font=self.__font)
+        input = ttk.Entry(self, font=self.__font, width=100)
         return input
     
     def _text_create(self, expr):
-        text = scrolledtext.ScrolledText(self, font=self.__font, wrap=WORD, width=20, height=10)
+        text = scrolledtext.ScrolledText(self, font=self.__font, wrap=WORD, width=50, height=10)
 
         text.delete(1.0, tk.END)
         text.insert(tk.END, expr)
@@ -45,28 +45,13 @@ class Page(ttk.Frame):
     def _clear_widget(self, widgets):
         for widget in widgets:
             widget.destroy()
-    
-    def _table_create(self, columns, valList):
-        tree = ttk.Treeview(self, columns=columns["tag"])
-        for i, value in enumerate(columns["name"], start = 0):
-            tree.heading("#" + str(i + 1), text=value)
-        for i in valList:
-            tree.insert("", "end", values=i)
 
-        vsb = ttk.Scrollbar(self, orient="vertical", command=tree.yview)
-        tree.configure(yscrollcommand=vsb.set)
-        vsb.pack(side="right", fill="y")
-        hsb = ttk.Scrollbar(self, orient="horizontal", command=tree.xview)
-        tree.configure(xscrollcommand=hsb.set)
-        
-        hsb.pack(side="bottom", fill="x")
-        return tree
     def quit(self):
         self.quit()
     
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("1000x1000")
+    root.geometry("2000X2000")
     page = Page(root)
     page.pack()
     root.mainloop()

@@ -2,8 +2,8 @@ import tkinter as tk
 import json
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
-from page import Page
-from table import Table
+from .page import Page
+from .table import Table
 class HistoryPage(Page):
     def __init__(self:Page, root, font, tools):
         super().__init__(root, font)

@@ -1,9 +1,10 @@
 import tkinter as tk
 from ttkbootstrap.constants import *
-from menu import Menu
-from page import Page
-from translate_page import TranslatePage
-from history_page import HistoryPage
+from .menu import Menu
+from .page import Page
+from .translate_page import TranslatePage
+from .history_page import HistoryPage
+from ..tools.translate import Translate
 class Ui:
     def __init__(self, font, size, tools):
         self.root = tk.Tk()

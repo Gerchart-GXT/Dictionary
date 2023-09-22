@@ -1,6 +1,7 @@
 import sqlite3
-from table_sql import *
+from .table_sql import *
 
+print(__name__)
 class Db:
     def __init__(self):
         try:

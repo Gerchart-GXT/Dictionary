@@ -1,4 +1,4 @@
-from page import Page
+from .page import Page
 import tkinter as tk
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *

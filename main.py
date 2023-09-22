@@ -1,10 +1,6 @@
-import sys
-sys.path.append("./ui")
-sys.path.append("./db")
 from tools.translate import Translate
-from ui import Ui   
-from db import Db
-
+from ui.ui import Ui   
+from db.db import Db
 class Dic:
     def __init__(self):
         self.translator = Translate("en")

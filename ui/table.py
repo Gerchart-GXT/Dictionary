@@ -1,5 +1,5 @@
 import tkinter as tk
-from dialog import Dialog
+from .dialog import Dialog
 from ttkbootstrap import ttk
 from ttkbootstrap.constants import *
 class Table:
